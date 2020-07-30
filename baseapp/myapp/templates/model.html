@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    body {
+      background-color: #104969;
+      color: white;
+      font-family: 'Lato', sans-serif;
+    }
+    .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+        background-color: #8064A2 !important;
+        border-color: white;
+    }
+    h3{
+        vertical-align: middle;
+    }
+    .justify-content-center{
+        text-align: center;
+        margin:0 auto;
+        column-gap: 20px;
+    }
+    .row1 .col-md-3{
+        display:inline-block;
+        vertical-align: middle;
+        float: none;
+    }
+    .row1 .col-md-4{
+        display:inline-block;
+        vertical-align: middle;
+        float: none;
+    }
+</style>
+
+    <div class="container">
+        <form method="POST" enctype="multipart/form-data" name = "f">
+            {% csrf_token %}
+            <br>
+                 <div class="text-center">
+                    <h1>Upload your image here!</h1>
+                    <br>
+                      {{context.image}}
+                      <br>
+                      <br>
+                        <button class="btn btn-primary" type="submit">Classify</button>
+    </div>
+            <br>
+             {% if img is not None %}
+                <div class="text-center">
+                    <h2>Your result: {{result}}</h2>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class=".col-md-3">
+                        <img src = "{{img.image.url}}" width="300" height="300">
+                    </div>
+                    <div class=".col-md-4">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h3>   {{p1}}</h3>
+                        <h3>   {{p2}}</h3> 
+                        <h3>   {{p3}}</h3>
+                    </div>
+                </div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}
