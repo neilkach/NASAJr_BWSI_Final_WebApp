@@ -40,9 +40,9 @@ def model(request):
             result = 'Benign'
         elif (index==2):
             result = 'Lung Squamous Cell Carcinoma'
-        p1 = '   Benign: ' + str(round(outputs[0][1]*100, 2)) + '%' 
-        p2 = '   Lung Adenocarcinoma: ' + str(round(outputs[0][0]*100, 2)) + '%'
-        p3 = '   Lung Squamous Cell Carcinoma: ' + str(round(outputs[0][2]*100, 2)) + '%'
+        p1 = 'Benign.....................................................: '+ str(round(outputs[0][1]*100, 2)) + '%' 
+        p2 = 'Lung Adenocarcinoma....................: ' + str(round(outputs[0][0]*100, 2)) + '%'
+        p3 = 'Lung Squamous Cell Carcinoma: ' + str(round(outputs[0][2]*100, 2)) + '%'
         
         return render(request, 'model.html', {'context': context, 'img': img, 'result': result, 'p1': p1, 'p2': p2, 'p3': p3})
     else:
